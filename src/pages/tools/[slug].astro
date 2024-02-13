@@ -1,8 +1,8 @@
 ---
 import ButtonLink from '../../components/button-link.astro'
 import Layout from '../../components/layout.astro'
-import PriceTag from '../../components/price-tag.astro'
-import ProviderTag from '../../components/provider-tag.astro'
+import PriceTag from '../../components/price-tag'
+import ProviderTag from '../../components/provider-tag'
 import type { Tool } from '../../types/tool'
 
 const { slug } = Astro.params
@@ -27,6 +27,12 @@ if(!tool) {
         </div>
       </div>
       <ButtonLink external to={tool.url} className="h-14 px-6 text-lg w-full lg:w-auto">Visit</ButtonLink>
+    </div>
+
+    <div class="flex gap-1 flex-wrap mb-5">
+      {tool.tags.map((tag) => (
+        <span class="border border-dark-300 rounded-full px-3 py-1 text-sm">{tag}</span>
+      ))}
     </div>
 
     <p class="text-2xl mb-10">{tool.description}</p>
